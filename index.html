@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="para"></div>
+    <script>
+
+        var text='I am swetha ,i am studing mca in rvs college of arts and science.i want to become a front end developer.i adopt to any  to environment. '
+        text = text.replace(/[.,""\/#!$%\^&\*-;:{}()]/g,"").toLowerCase();
+        var words=text.split(" ");
+        let x={};
+        var myobj=[];
+        var ele=""
+
+        words.forEach(function(item){
+            if(x[item]){
+                x[item]++
+            }
+            else{
+                x[item]=1
+            }
+        });
+
+        for(let key in x){
+            myobj.push({[key]:x[key]});
+        }
+        
+        myobj.sort((a,b)=>{
+            let valueA=Object.values(a);
+            let valueB=Object.values(b);
+            return valueB-valueA;
+           
+        });
+
+        let topthree=myobj.slice(0,3)
+        console.log(topthree)
+
+    
+
+        topthree.forEach(item=>{
+            for(let key in item){
+                ele=ele+"<h1>"+`${key}:${item[key]}`+"</h1>";
+            }
+        })
+        
+        document.getElementById("para").innerHTML=ele
+
+    </script>
+</body>
+</html>
